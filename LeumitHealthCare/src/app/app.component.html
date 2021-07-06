@@ -1,0 +1,24 @@
+<h1 class="header">Leumit Health Care</h1>
+
+<div class="inputs">
+  <input  #word type="search" (input)="getWord(word.value)" />
+</div>
+
+<div class="numbersWarper" *ngIf="(stringNumbers$ | async)">
+  <div class="colorsColumns" *ngFor="let color of colors; let index = index " [style.background-color] = 'color'>
+    <div #indexer class="numbers"  *ngIf="wordsArr[index].includes(searchWord) " (click)="wordToShow(index)">
+      {{reveresArr[index]}}  
+    </div>
+  </div>
+</div>
+<div>
+  <h2 class="showChosenWords" *ngIf="wordClicked">{{showWord}}</h2>
+</div>
+
+<div class="images" *ngIf="!(stringNumbers$ | async)">
+  <div><img src="../../assets/images/no_connection.png"/></div>
+ 
+</div>
+<h3  class="noConnectionMassage" *ngIf="!(stringNumbers$ | async)">No connection</h3>
+
+
